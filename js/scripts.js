@@ -1,5 +1,4 @@
 // Efectos de la página
-
 window.addEventListener("DOMContentLoaded", () => {
     // Animación de aparición de la página
     document.body.style.opacity = "0";
@@ -10,6 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Obtener todas las secciones con animación
     const sections = document.querySelectorAll(".section-transition");
+    const instagram = document.getElementById("instagram");
     const footer = document.getElementById("footer");
     const contactSection = document.getElementById("contact");
 
@@ -18,6 +18,9 @@ window.addEventListener("DOMContentLoaded", () => {
         section.style.opacity = "0";
         section.style.transform = "translateY(20px)";
     });
+
+    instagram.style.opacity = "0"; // Ocultar Instagram inicialmente
+    instagram.style.transform = "translateY(20px)";
 
     footer.style.opacity = "0"; // Ocultar footer inicialmente
     footer.style.transform = "translateY(20px)";
@@ -33,22 +36,28 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Activar el footer solo cuando "Contacto" esté visible
+        // Activar Instagram y footer solo cuando "Contacto" esté visible
         const contactRect = contactSection.getBoundingClientRect();
         if (contactRect.top < window.innerHeight * 0.8) {
+            instagram.style.opacity = "1";
+            instagram.style.transform = "translateY(0)";
+            instagram.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+
             footer.style.opacity = "1";
             footer.style.transform = "translateY(0)";
             footer.style.transition = "opacity 0.6s ease, transform 0.6s ease";
         } else {
+            instagram.style.opacity = "0";
+            instagram.style.transform = "translateY(20px)";
+
             footer.style.opacity = "0";
             footer.style.transform = "translateY(20px)";
         }
     };
 
     // Aplicar evento de scroll y carga inicial
-    document.addEventListener("scroll", handleScroll);
-    window.addEventListener("load", handleScroll);
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("load", handleScroll);
 
     // Navbar shrink function
     const navbarShrink = () => {
@@ -70,7 +79,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Inicializar navbar shrink
     navbarShrink();
-    document.addEventListener("scroll", navbarShrink);
+    window.addEventListener("scroll", navbarShrink);
     window.addEventListener("resize", navbarShrink);
 
     // Activar Bootstrap Scrollspy en el navbar
@@ -102,7 +111,6 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // Formulario
-
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
 
@@ -111,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let isValid = true;
 
-        // Validar nombre (no debe estar vacío)
+        // Validar nombre
         const name = document.getElementById("name");
         if (name.value.trim() === "") {
             name.classList.add("is-invalid");
@@ -120,9 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
             name.classList.remove("is-invalid");
         }
 
-        // Validar correo (debe ser un email válido)
+        // Validar correo
         const email = document.getElementById("email");
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Patrón básico de email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailPattern.test(email.value.trim())) {
             email.classList.add("is-invalid");
             isValid = false;
@@ -130,9 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
             email.classList.remove("is-invalid");
         }
 
-        // Validar teléfono (solo debe contener números)
+        // Validar teléfono
         const phone = document.getElementById("phone");
-        const phonePattern = /^[0-9]+$/; // Expresión regular: solo números
+        const phonePattern = /^[0-9]+$/;
         if (!phonePattern.test(phone.value.trim())) {
             phone.classList.add("is-invalid");
             isValid = false;
@@ -140,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
             phone.classList.remove("is-invalid");
         }
 
-        // Validar mensaje (no debe estar vacío)
+        // Validar mensaje
         const message = document.getElementById("message");
         if (message.value.trim() === "") {
             message.classList.add("is-invalid");
@@ -149,10 +157,10 @@ document.addEventListener("DOMContentLoaded", () => {
             message.classList.remove("is-invalid");
         }
 
-        // Si todo está correcto, muestra un mensaje y reinicia el formulario
+        // Enviar formulario
         if (isValid) {
-            alert("Formulario enviado correctamente."); // Puedes reemplazar esto con una llamada AJAX
-            form.reset(); // Limpia los campos después del envío
+            alert("Formulario enviado correctamente.");
+            form.reset();
         }
     });
 });
