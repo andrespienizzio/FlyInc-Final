@@ -1,4 +1,4 @@
-// Efectos de la pagina
+// Efectos de la página
 
 window.addEventListener("DOMContentLoaded", () => {
     // Animación de aparición de la página
@@ -10,12 +10,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Obtener todas las secciones con animación
     const sections = document.querySelectorAll(".section-transition");
+    const footer = document.getElementById("footer");
+    const contactSection = document.getElementById("contact");
 
     // Inicializar opacidad y transformación de las secciones
     sections.forEach((section) => {
         section.style.opacity = "0";
         section.style.transform = "translateY(20px)";
     });
+
+    footer.style.opacity = "0"; // Ocultar footer inicialmente
+    footer.style.transform = "translateY(20px)";
 
     // Función para activar animaciones en el scroll
     const handleScroll = () => {
@@ -27,11 +32,23 @@ window.addEventListener("DOMContentLoaded", () => {
                 section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
             }
         });
+
+        // Activar el footer solo cuando "Contacto" esté visible
+        const contactRect = contactSection.getBoundingClientRect();
+        if (contactRect.top < window.innerHeight * 0.8) {
+            footer.style.opacity = "1";
+            footer.style.transform = "translateY(0)";
+            footer.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        } else {
+            footer.style.opacity = "0";
+            footer.style.transform = "translateY(20px)";
+        }
     };
 
     // Aplicar evento de scroll y carga inicial
     document.addEventListener("scroll", handleScroll);
     window.addEventListener("load", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // Navbar shrink function
     const navbarShrink = () => {
