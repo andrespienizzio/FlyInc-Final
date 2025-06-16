@@ -484,6 +484,9 @@ section#contact .instagram-icon i {
   margin-top: 3% !important; /* Margen superior dentro del botón */
 }
 
+#contact {
+    margin-bottom: -40px; 
+}
 
 @media (min-width: 1200px) {
   legend {
@@ -12993,7 +12996,6 @@ header.masthead .h1 {
   display: block;
   margin-top: 5% !important; /* Margen superior dentro del botón */
 }
-
 
 #profesionales .row {
   display: flex;
