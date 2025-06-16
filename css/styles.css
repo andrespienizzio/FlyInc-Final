@@ -466,9 +466,9 @@ section#contact .instagram-icon {
   /* Para centrar el ícono */
   align-items: center;
   justify-content: center;
-  width: 56px;
+  width: 50px;
   /* Tamaño del ícono */
-  height: 56px;
+  height: 50px;
   /* Tamaño del ícono */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* Sombra ligera */
@@ -480,8 +480,8 @@ section#contact .instagram-icon:hover {
 }
 
 section#contact .instagram-icon i {
-  font-size: 24px;
-  /* Ajusta el tamaño del ícono */
+  font-size: 22px;  /* Ajusta el tamaño del ícono */
+  margin-top: 3% !important; /* Margen superior dentro del botón */
 }
 
 

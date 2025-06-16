@@ -12,14 +12,14 @@ window.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".section-transition");
 
     // Inicializar opacidad y transformación de las secciones
-    sections.forEach(section => {
+    sections.forEach((section) => {
         section.style.opacity = "0";
         section.style.transform = "translateY(20px)";
     });
 
     // Función para activar animaciones en el scroll
     const handleScroll = () => {
-        sections.forEach(section => {
+        sections.forEach((section) => {
             const rect = section.getBoundingClientRect();
             if (rect.top < window.innerHeight * 0.8) {
                 section.style.opacity = "1";
@@ -67,8 +67,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Cerrar el navbar responsive cuando un ítem es clickeado
     const navbarToggler = document.querySelector(".navbar-toggler");
-    const responsiveNavItems = document.querySelectorAll("#navbarResponsive .nav-link");
-    responsiveNavItems.forEach(navItem => {
+    const responsiveNavItems = document.querySelectorAll(
+        "#navbarResponsive .nav-link"
+    );
+    responsiveNavItems.forEach((navItem) => {
         navItem.addEventListener("click", () => {
             if (window.getComputedStyle(navbarToggler).display !== "none") {
                 navbarToggler.click();
@@ -137,4 +139,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
