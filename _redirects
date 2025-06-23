@@ -1,0 +1,3 @@
+/contacto      /#contact            301
+/nosotros      /#about              302
+/blog/*        /articulos/:splat    302
