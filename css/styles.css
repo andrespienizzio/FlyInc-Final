@@ -85,10 +85,6 @@ html,body {
   overflow-x: clip; 
 }
 
-* {
-  outline: 1px solid rgba(255, 0, 0, 0.2);
-}
-
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -12902,13 +12898,26 @@ header.masthead .h1 {
 }
 
 /* Estilo para la sección de about */
-#about .col-md-6 p {
-  margin-bottom: 0.5rem !important; /* Mantiene el ajuste normal */
+
+/* Que ambas columnas de texto estén siempre apiladas */
+#about .col-md-6 {
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
 }
 
-/* Aumenta la distancia cuando aparece el botón */
+/* Margen inferior solo al primer bloque de texto para separar visualmente */
+#about .col-md-6:first-child {
+  margin-bottom: 0.2rem;
+}
+
+/* Ajusta márgenes inferiores de los párrafos internos */
+#about .col-md-6 p {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Espaciado extra entre el bloque de texto y el botón */
 #about .col-lg-8 .btn-xl {
-  margin-top: 1.5rem !important; /* Incrementa la separación en un 20% */
+  margin-top: 1.5rem !important;
 }
 
 /* Estilo para la sección de profesionales */
