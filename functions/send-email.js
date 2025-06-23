@@ -8,11 +8,11 @@ export async function onRequestPost({ request, env }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "Flyance <contacto@flyance.com.ar>",
-      to: ["consultas@flyance.com.ar"],
+      from: "Flyance <info@flyance.com.ar>", 
+      to: ["info@flyance.com.ar"],          
       subject: `Nuevo mensaje de ${body.name}`,
       html: `
-        <h2>Nuevo mensaje desde el formulario de contacto</h2>
+        <h2>Formulario de contacto desde flyance.com.ar</h2>
         <p><strong>Nombre:</strong> ${body.name}</p>
         <p><strong>Email:</strong> ${body.email}</p>
         <p><strong>Teléfono:</strong> ${body.phone}</p>
