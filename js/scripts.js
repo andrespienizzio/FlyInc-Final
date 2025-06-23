@@ -114,7 +114,7 @@ window.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contactForm");
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
         event.preventDefault(); // Evita el envío automático si hay errores
 
         let isValid = true;
@@ -157,10 +157,32 @@ document.addEventListener("DOMContentLoaded", () => {
             message.classList.remove("is-invalid");
         }
 
-        // Enviar formulario
+        // Enviar formulario al backend
         if (isValid) {
-            alert("Formulario enviado correctamente.");
-            form.reset();
+            const data = {
+                name: name.value.trim(),
+                email: email.value.trim(),
+                phone: phone.value.trim(),
+                message: message.value.trim()
+            };
+
+            try {
+                const res = await fetch("/send-email", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                if (res.ok) {
+                    alert("Mensaje enviado correctamente. Pronto nos pondremos en contacto.");
+                    form.reset();
+                } else {
+                    alert("Ocurrió un error al enviar el mensaje. Por favor, intentá nuevamente.");
+                }
+            } catch (err) {
+                alert("No se pudo conectar con el servidor. Verificá tu conexión.");
+            }
         }
     });
 });
+
