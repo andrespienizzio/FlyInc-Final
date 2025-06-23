@@ -81,6 +81,14 @@
   }
 }
 
+html,body {
+  overflow-x: clip; 
+}
+
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.2);
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -1286,7 +1294,7 @@ progress {
 
   .col-md-6 {
     flex: 0 0 auto;
-    /* width: 50%; */
+    width: 50%;
   }
 
   .col-md-7 {
@@ -1492,7 +1500,6 @@ progress {
     flex: 0 0 auto;
     width: 33.33333333%;
   }
-
 
   .col-lg-5 {
     flex: 0 0 auto;
@@ -12904,39 +12911,46 @@ header.masthead .h1 {
   margin-top: 1.5rem !important; /* Incrementa la separación en un 20% */
 }
 
-
 /* Estilo para la sección de profesionales */
 #profesionales {
   background-color: #2d2926 !important;
-  /* Fondo oscuro */
   color: #f4eeed !important;
-  /* Texto claro */
 }
 
 /* Asegura que las imágenes sean cuadradas y con borde borde */
 #profesionales .team-member img {
   width: 350px;
-  /* Tamaño cuadrado */
   height: 350px;
-  /* Tamaño cuadrado */
   object-fit: cover;
-  /* Asegura que la imagen se recorte de forma apropiada */
   border-radius: 1% !important;
-  /* Bordes ligeramente redondeados */
+  margin-bottom: 15px;
 }
 
-/* Estilos adicionales para asegurar que todo se vea bien */
+/* En móvil, adaptacion para que no se desborden las imagenes*/
+@media (max-width: 576px) {
+  #profesionales .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #profesionales .team-member img {
+    width: 90vw;
+    height: auto;
+    max-width: 350px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+}
+
+/* Estilos adicionales */
 #profesionales .team-member {
   margin-top: 20px;
 }
 
-#profesionales .team-member img {
-  margin-bottom: 15px;
-}
-
 #profesionales .team-member ul {
-  list-style-type: disc; /* Asegura que los puntos aparezcan */
-  padding-left: 20px; /* Agrega espacio para la viñeta */
+  list-style-type: disc;
+  padding-left: 20px;
   margin-top: 5px;
 }
 
@@ -12946,7 +12960,6 @@ header.masthead .h1 {
   margin-bottom: 5px;
 }
 
-/* Estilo para el texto bajo los nombres */
 #profesionales .team-member h4 {
   margin-top: 10px;
   margin-bottom: 5px;
@@ -12959,51 +12972,83 @@ header.masthead .h1 {
   margin-bottom: 2px;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.75) !important;
-  text-align: center; /* Centra el texto */
-  max-width: 75%; /* Limita el ancho del texto */
-  margin-left: auto; /* Ajusta margen izquierdo */
-  margin-right: auto; /* Ajusta margen derecho */
+  text-align: center;
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Estilo para el botón de LinkedIn */
+/* Botón de LinkedIn */
 #profesionales .btn-linkedin {
   background-color: #57101b;
-  /* Color principal */
   color: white;
   padding: 10px;
-  /* 10% más pequeño */
   border-radius: 50%;
   width: 45px;
-  /* Botón un 10% más chico */
   height: 45px;
   display: inline-block;
   text-align: center;
   line-height: 1.2;
   transition: background-color 0.3s ease;
-  /* Transición para el hover */
-  margin-top: 5px !important; /* Fuerza el margen superior */
+  margin-top: 5px !important;
 }
 
-/* Hover sobre el botón de LinkedIn */
 #profesionales .btn-linkedin:hover {
   background-color: #741931 !important;
-  /* Color en hover */
 }
 
 #profesionales .linkedin-icon i {
   font-size: 19px;
   color: white;
   display: block;
-  margin-top: 5% !important; /* Margen superior dentro del botón */
+  margin-top: 5% !important;
 }
 
+/* Separación entre columnas y filas */
 #profesionales .row {
-  display: flex;
-  justify-content: center; /* Centra los elementos */
-  gap: 5px; /* Reduce el espacio entre columnas */
+  row-gap: 2.5rem;
+  column-gap: 3rem;
 }
 
-#profesionales .col-lg-4 {
-    flex: 0 0 38% !important; /* Ajusta el ancho de cada columna */
+/* Estilo para la sección de servicios */
+
+/* Entre 768px y 1023px → apilar servicios uno debajo del otro */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  #services .col-md-6,
+  #services .col-lg-4 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* En 1024px exactos → 3 columnas + padding lateral */
+@media (width: 1024px) {
+  #services .col-md-6,
+  #services .col-lg-4 {
+    flex: 0 0 33.3333% !important;
+    max-width: 33.3333% !important;
+  }
+
+  section#services > .container,
+  #services .container.container-padding-override {
+    padding-left: 8rem !important;
+    padding-right: 8rem !important;
+  }
+}
+
+/* 💻 Entre 992px y 1200px → 2 columnas (laptops medianas) */
+@media (min-width: 992px) and (max-width: 1200px) {
+  #services .col-lg-4 {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+}
+
+@media (min-width: 1400px) {
+  #services .container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
