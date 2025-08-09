@@ -12920,8 +12920,6 @@ header.masthead .h1 {
   margin-top: 1.5rem !important;
 }
 
-
-
 /* Estilo para la sección de profesionales */
 #profesionales {
   background-color: #2d2926 !important;
@@ -13017,14 +13015,8 @@ header.masthead .h1 {
 
 /* Separación entre columnas y filas */
 #profesionales .row {
-  row-gap: 2.5rem;
   column-gap: 3rem;
 }
-
-
-
-
-
 
 /* Estilo para la sección de servicios */
 
