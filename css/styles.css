@@ -12921,34 +12921,61 @@ header.masthead .h1 {
 }
 
 /* Estilo para la sección de profesionales */
-#profesionales {
-  background-color: #2d2926 !important;
-  color: #f4eeed !important;
+.profesionales-row {
+  display: flex;
+  flex-wrap: nowrap;     /* fuerza horizontal */
+  justify-content: center;
+  text-align: center;
 }
 
-/* Asegura que las imágenes sean cuadradas y con borde */
+/* Imágenes cuadradas */
 #profesionales .team-member img {
   width: 350px;
   height: 350px;
   object-fit: cover;
-  border-radius: 1% !important;
+  border-radius: 5px;
   margin-bottom: 15px;
 }
 
-/* En móvil, adaptacion para que no se desborden las imagenes*/
-@media (max-width: 576px) {
+/* En móviles (<768px) → apiladas */
+@media (max-width: 768px) {
+  .profesionales-row {
+    flex-wrap: wrap;     /* se apilan */
+  }
   #profesionales .team-member {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
   #profesionales .team-member img {
     width: 90vw;
     height: auto;
     max-width: 350px;
     aspect-ratio: 1 / 1;
-    object-fit: cover;
+  }
+}
+
+/* En pantallas intermedias (769px a 1023px) → también apiladas */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .profesionales-row {
+    flex-wrap: wrap;     /* se apilan igual que en móvil */
+  }
+  .profesionales-row .col-12,
+  .profesionales-row .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* A partir de 1024px → horizontales */
+@media (min-width: 1024px) {
+  .profesionales-row {
+    flex-wrap: nowrap;   /* fuerza horizontal */
+  }
+  .profesionales-row .col-12,
+  .profesionales-row .col-md-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
   }
 }
 
